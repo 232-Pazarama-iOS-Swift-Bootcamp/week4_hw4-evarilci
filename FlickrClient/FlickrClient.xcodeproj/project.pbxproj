@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E542D7AB28F87031002FABAB /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = E542D7AA28F87031002FABAB /* Moya */; };
+		E542D7AD28F87868002FABAB /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E542D7AC28F87868002FABAB /* Photo.swift */; };
+		E542D7AF28F878F3002FABAB /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = E542D7AE28F878F3002FABAB /* Photos.swift */; };
+		E542D7B228FA1961002FABAB /* Extension+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E542D7B128FA1961002FABAB /* Extension+UIImage.swift */; };
+		E542D7B528FA1D14002FABAB /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E542D7B428FA1D14002FABAB /* Kingfisher */; };
 		E5BA456628F73D1E00C94A27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BA456528F73D1E00C94A27 /* AppDelegate.swift */; };
 		E5BA456F28F73D2000C94A27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5BA456E28F73D2000C94A27 /* Assets.xcassets */; };
 		E5BA457228F73D2000C94A27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5BA457028F73D2000C94A27 /* LaunchScreen.storyboard */; };
@@ -16,9 +21,14 @@
 		E5BA458C28F754EA00C94A27 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BA458B28F754EA00C94A27 /* TableView.swift */; };
 		E5BA459028F7613D00C94A27 /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BA458F28F7613D00C94A27 /* ContentCell.swift */; };
 		E5BA459428F76C2C00C94A27 /* FlickrAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BA459328F76C2C00C94A27 /* FlickrAPI.swift */; };
+		E5CCAFD628FDC93C00257566 /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAFD528FDC93C00257566 /* Extension+UIColor.swift */; };
+		E5CCAFD828FDCBC900257566 /* UILabel+Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAFD728FDCBC900257566 /* UILabel+Padding.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E542D7AC28F87868002FABAB /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		E542D7AE28F878F3002FABAB /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
+		E542D7B128FA1961002FABAB /* Extension+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIImage.swift"; sourceTree = "<group>"; };
 		E5BA456228F73D1E00C94A27 /* FlickrClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5BA456528F73D1E00C94A27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5BA456E28F73D2000C94A27 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -29,6 +39,8 @@
 		E5BA458B28F754EA00C94A27 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		E5BA458F28F7613D00C94A27 /* ContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
 		E5BA459328F76C2C00C94A27 /* FlickrAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrAPI.swift; sourceTree = "<group>"; };
+		E5CCAFD528FDC93C00257566 /* Extension+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
+		E5CCAFD728FDCBC900257566 /* UILabel+Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Padding.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +48,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E542D7B528FA1D14002FABAB /* Kingfisher in Frameworks */,
+				E542D7AB28F87031002FABAB /* Moya in Frameworks */,
 				E5BA458A28F7541C00C94A27 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -43,6 +57,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E542D7B028FA193B002FABAB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E542D7B128FA1961002FABAB /* Extension+UIImage.swift */,
+				E5CCAFD528FDC93C00257566 /* Extension+UIColor.swift */,
+				E5CCAFD728FDCBC900257566 /* UILabel+Padding.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		E5BA455928F73D1E00C94A27 = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +98,7 @@
 				E5BA457A28F7411300C94A27 /* Plists */,
 				E5BA457D28F7412F00C94A27 /* delegate */,
 				E5BA457C28F7412600C94A27 /* view */,
+				E5BA459128F76C0300C94A27 /* Core */,
 				E5BA457B28F7411E00C94A27 /* assets */,
 			);
 			path = App;
@@ -91,7 +116,6 @@
 			isa = PBXGroup;
 			children = (
 				E5BA456E28F73D2000C94A27 /* Assets.xcassets */,
-				E5BA459128F76C0300C94A27 /* Core */,
 			);
 			path = assets;
 			sourceTree = "<group>";
@@ -134,6 +158,8 @@
 		E5BA458228F745B400C94A27 /* Modal */ = {
 			isa = PBXGroup;
 			children = (
+				E542D7AC28F87868002FABAB /* Photo.swift */,
+				E542D7AE28F878F3002FABAB /* Photos.swift */,
 			);
 			path = Modal;
 			sourceTree = "<group>";
@@ -166,6 +192,7 @@
 		E5BA459128F76C0300C94A27 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				E542D7B028FA193B002FABAB /* Extensions */,
 				E5BA459228F76C1200C94A27 /* Network */,
 			);
 			path = Core;
@@ -197,6 +224,8 @@
 			name = FlickrClient;
 			packageProductDependencies = (
 				E5BA458928F7541C00C94A27 /* SnapKit */,
+				E542D7AA28F87031002FABAB /* Moya */,
+				E542D7B428FA1D14002FABAB /* Kingfisher */,
 			);
 			productName = FlickrClient;
 			productReference = E5BA456228F73D1E00C94A27 /* FlickrClient.app */;
@@ -228,6 +257,8 @@
 			mainGroup = E5BA455928F73D1E00C94A27;
 			packageReferences = (
 				E5BA458828F7541C00C94A27 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				E542D7A928F87031002FABAB /* XCRemoteSwiftPackageReference "Moya" */,
+				E542D7B328FA1D13002FABAB /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = E5BA456328F73D1E00C94A27 /* Products */;
 			projectDirPath = "";
@@ -255,11 +286,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5CCAFD828FDCBC900257566 /* UILabel+Padding.swift in Sources */,
 				E5BA457F28F741E100C94A27 /* HomeViewModel.swift in Sources */,
+				E5CCAFD628FDC93C00257566 /* Extension+UIColor.swift in Sources */,
+				E542D7AD28F87868002FABAB /* Photo.swift in Sources */,
 				E5BA458C28F754EA00C94A27 /* TableView.swift in Sources */,
 				E5BA459028F7613D00C94A27 /* ContentCell.swift in Sources */,
 				E5BA459428F76C2C00C94A27 /* FlickrAPI.swift in Sources */,
 				E5BA456628F73D1E00C94A27 /* AppDelegate.swift in Sources */,
+				E542D7B228FA1961002FABAB /* Extension+UIImage.swift in Sources */,
+				E542D7AF28F878F3002FABAB /* Photos.swift in Sources */,
 				E5BA458728F7506700C94A27 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -480,6 +516,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E542D7A928F87031002FABAB /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.0;
+			};
+		};
+		E542D7B328FA1D13002FABAB /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 		E5BA458828F7541C00C94A27 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -491,6 +543,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E542D7AA28F87031002FABAB /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E542D7A928F87031002FABAB /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		E542D7B428FA1D14002FABAB /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E542D7B328FA1D13002FABAB /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		E5BA458928F7541C00C94A27 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E5BA458828F7541C00C94A27 /* XCRemoteSwiftPackageReference "SnapKit" */;

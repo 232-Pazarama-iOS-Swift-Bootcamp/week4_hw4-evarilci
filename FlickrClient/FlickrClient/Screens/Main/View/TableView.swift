@@ -10,14 +10,15 @@ import SnapKit
 
 final class mainTableView: UIView {
 
-   private lazy var tableView = UITableView()
+   private(set) lazy var tableView = UITableView()
     
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setTableViewConstraints()
         tableView.register(ContentCell.self, forCellReuseIdentifier: "contentCell")
-        tableView.rowHeight = 600
+        tableView.rowHeight = 500
+        
         
     }
     
@@ -40,5 +41,11 @@ final class mainTableView: UIView {
             make.trailing.equalToSuperview()
         }
     }
+    
+//    func refresh() {
+//        DispatchQueue.main.async {
+//            self.tableView.reloadData()
+//        }
+//    }
     
 }
