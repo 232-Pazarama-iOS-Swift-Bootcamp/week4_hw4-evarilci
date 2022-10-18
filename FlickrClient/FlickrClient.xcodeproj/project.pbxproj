@@ -23,6 +23,7 @@
 		E5BA459428F76C2C00C94A27 /* FlickrAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BA459328F76C2C00C94A27 /* FlickrAPI.swift */; };
 		E5CCAFD628FDC93C00257566 /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAFD528FDC93C00257566 /* Extension+UIColor.swift */; };
 		E5CCAFD828FDCBC900257566 /* UILabel+Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAFD728FDCBC900257566 /* UILabel+Padding.swift */; };
+		E5CCAFDA28FF0EB900257566 /* Extension+ConstraintsMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CCAFD928FF0EB900257566 /* Extension+ConstraintsMaker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		E5BA459328F76C2C00C94A27 /* FlickrAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrAPI.swift; sourceTree = "<group>"; };
 		E5CCAFD528FDC93C00257566 /* Extension+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
 		E5CCAFD728FDCBC900257566 /* UILabel+Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Padding.swift"; sourceTree = "<group>"; };
+		E5CCAFD928FF0EB900257566 /* Extension+ConstraintsMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+ConstraintsMaker.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				E542D7B128FA1961002FABAB /* Extension+UIImage.swift */,
 				E5CCAFD528FDC93C00257566 /* Extension+UIColor.swift */,
 				E5CCAFD728FDCBC900257566 /* UILabel+Padding.swift */,
+				E5CCAFD928FF0EB900257566 /* Extension+ConstraintsMaker.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 			files = (
 				E5CCAFD828FDCBC900257566 /* UILabel+Padding.swift in Sources */,
 				E5BA457F28F741E100C94A27 /* HomeViewModel.swift in Sources */,
+				E5CCAFDA28FF0EB900257566 /* Extension+ConstraintsMaker.swift in Sources */,
 				E5CCAFD628FDC93C00257566 /* Extension+UIColor.swift in Sources */,
 				E542D7AD28F87868002FABAB /* Photo.swift in Sources */,
 				E5BA458C28F754EA00C94A27 /* TableView.swift in Sources */,

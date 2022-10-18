@@ -15,7 +15,13 @@ enum RecentPhotoStatus {
 
 final class HomeViewModel {
     
+    func addFavorites() {
+        print("hadi be")
+    }
     
+    func addSaved() {
+        print("calısıyor")
+    }
     var statusHandler : ((RecentPhotoStatus) -> Void)?
     
     private(set) var recentResponse : PhotoResponse?{
@@ -58,4 +64,6 @@ final class HomeViewModel {
 
         return self.recentResponse?.photos?.photo[indexPath.row]
     }
+    
+    
 }

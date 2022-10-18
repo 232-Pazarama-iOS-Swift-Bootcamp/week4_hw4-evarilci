@@ -8,16 +8,17 @@
 import UIKit
 import SnapKit
 
-class ContentCell: UITableViewCell {
+
+
+final class ContentCell: UITableViewCell {
     
     private(set) lazy var contentImageView = UIImageView()
     private lazy var userNameLabel = UILabel()
-    private lazy var likeButton = UIButton()
-    private lazy var saveButton = UIButton()
+    lazy var likeButton = UIButton()
+    lazy var saveButton = UIButton()
     private lazy var titleLable = UILabel()
-    
+    private var image = UIImage(named: "heart")
     let viewModel = HomeViewModel()
-    
     var title : String? {
         set {
             titleLable.text = newValue
@@ -26,51 +27,34 @@ class ContentCell: UITableViewCell {
             titleLable.text
         }
     }
-
     var username : String? {
         set {
-            userNameLabel.text = newValue
+            userNameLabel.text = "  @\(newValue!)"
         }
         get {
             userNameLabel.text
         }
     }
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-       
+        
         configureUserNameLabel()
         configureImageView()
         configureTitleLable()
         configureLikeButton()
         configureSaveButton()
-        
-        //setContent()
-        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setContent(){
-        
-        
-        
-        contentImageView.image = UIImage(named: "data")
-        userNameLabel.text = "@evarilci69"
-    }
-    
-    
-    
     func configureImageView() {
-        addSubview(contentImageView)
+        contentView.addSubview(contentImageView)
         contentImageView.layer.cornerRadius = 25
         contentImageView.clipsToBounds = true
         contentImageView.snp.makeConstraints { make in
-            
-            
-            //make.width.equalToSuperview().offset(-8)
             make.centerX.equalToSuperview()
             make.height.equalTo(400)
             make.width.equalTo(contentImageView.snp.height).multipliedBy(12.0 / 9.0).offset(-8)
@@ -79,68 +63,60 @@ class ContentCell: UITableViewCell {
     }
     
     func configureTitleLable() {
-        addSubview(titleLable)
-        titleLable.numberOfLines = .max
+        contentView.addSubview(titleLable)
+        titleLable.font = UIFont(name: "Helvetica", size: 17)
+        titleLable.lineBreakMode = .byCharWrapping
+        titleLable.numberOfLines = .zero
         titleLable.snp.makeConstraints { make in
             make.top.equalTo(contentImageView.snp.bottom).offset(12)
             make.leading.equalTo(contentImageView.snp.leading)
             make.trailing.equalTo(contentImageView.snp.trailing)
             make.width.equalToSuperview().offset(-8)
-            make.height.equalTo(30)
-            
-            
+            make.height.equalTo(50)
         }
+        titleLable.sizeToFit()
     }
     
     func configureUserNameLabel() {
-        
-        userNameLabel.layer.borderWidth = 1.0
-        userNameLabel.backgroundColor = UIColor(hexString: "#ede7e1").withAlphaComponent(0.5)
+        contentView.addSubview(userNameLabel)
+        userNameLabel.layer.borderWidth = 1.2
+        userNameLabel.layer.cornerRadius = 10.0
+        userNameLabel.backgroundColor = UIColor(hexString: "#ede7e1").withAlphaComponent(0.3)
         userNameLabel.font = UIFont(name: "Helvetica", size: 20.0)
-        userNameLabel.layer.cornerRadius = 25.0
-        userNameLabel.layer.borderColor = UIColor(hexString: "#bae4e5").cgColor
+        userNameLabel.layer.borderColor = UIColor(hexString: "#bae4e5").withAlphaComponent(0.3).cgColor
         userNameLabel.clipsToBounds = true
-        userNameLabel.textAlignment = .center
-        addSubview(userNameLabel)
+        userNameLabel.textAlignment = .natural
+        
         userNameLabel.adjustsFontSizeToFitWidth = true
         userNameLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(50)
-            //make.width.equalToSuperview()
         }
     }
     
     func configureLikeButton() {
         
-        addSubview(likeButton)
-        likeButton.layer.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        likeButton.layer.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         likeButton.setImage(UIImage(named:"heart"), for: .normal)
+        contentView.addSubview(likeButton)
         likeButton.snp.makeConstraints { make in
-            make.top.equalTo(titleLable.snp.bottom).offset(15)
-            make.width.height.equalTo(40)
+            make.bottom.equalToSuperview().offset(-16)
+            make.width.height.equalTo(30)
             make.leading.equalTo(contentImageView.snp.leading).offset(10)
         }
-       
     }
     
     func configureSaveButton() {
-        addSubview(saveButton)
-        saveButton.layer.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        contentView.addSubview(saveButton)
+        
+        saveButton.layer.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         saveButton.setImage(UIImage(named:"floppy"), for: .normal)
         saveButton.snp.makeConstraints { make in
-            make.top.equalTo(titleLable.snp.bottom).offset(15)
-            make.width.height.equalTo(40)
+            make.bottom.equalToSuperview().offset(-16)
+            make.width.height.equalTo(30)
             make.trailing.equalTo(contentImageView.snp.trailing).offset(-16)
         }
-    }
-    
-}
-
-extension ConstraintMaker {
-    public func aspectRatio(_ ratio: CGSize) {
-        let view = item as! ConstraintView
-        self.width.equalTo(view.snp.height).multipliedBy(ratio.width / ratio.height)
     }
 }

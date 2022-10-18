@@ -17,7 +17,7 @@ final class mainTableView: UIView {
         super.init(frame: frame)
         setTableViewConstraints()
         tableView.register(ContentCell.self, forCellReuseIdentifier: "contentCell")
-        tableView.rowHeight = 500
+        tableView.rowHeight = 550
         
         
     }
@@ -42,10 +42,5 @@ final class mainTableView: UIView {
         }
     }
     
-//    func refresh() {
-//        DispatchQueue.main.async {
-//            self.tableView.reloadData()
-//        }
-//    }
     
 }

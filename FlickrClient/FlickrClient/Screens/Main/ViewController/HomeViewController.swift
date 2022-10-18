@@ -4,24 +4,14 @@
 //
 //  Created by Eymen Varilci on 12.10.2022.
 //
-
-import UIKit
-import SnapKit
+//import SnapKit
 import Kingfisher
+import UIKit
+
 
 
 final class HomeViewController: UIViewController {
     let Tabview = mainTableView()
-    var response : PhotoResponse? {
-        didSet {
-            //Tabview.refresh()
-            print("controller respponse check")
-        }
-    }
-    
-    //let model = [Photos]()
-    
-    
     private var viewModel : HomeViewModel
     
     init(viewModel: HomeViewModel) {
@@ -49,50 +39,49 @@ final class HomeViewController: UIViewController {
                 print(error.localizedDescription)
             }
         }
- 
+    }
+    
+    @objc func liked() {
+        print("liked")
     }
 }
 
 extension HomeViewController: UITableViewDelegate {
-  
+    
 }
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //  return viewModel.recentResponse?.photos?.photo.count ?? 0
         return viewModel.numberOfRows
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "contentCell") as? ContentCell else {
-                    fatalError("cell not found")
-                }
-        
-          
-        
-                guard let photo = viewModel.photoForIndexPath(indexPath) else {
-                    fatalError("photo not found!!!!!!!!")
-                }
-        
-        
-//                guard let url = URL(string: (photo.url_z!)) else {
-//                    fatalError("cant find url")
-//
-//                }
-        
-        
-                cell.username = photo.ownername
-                cell.contentImageView.kf.setImage(with: photo.imageURL) { _ in
-                    tableView.reloadRows(at: [indexPath], with: .automatic)
-                }
-                cell.title = photo.title
-    
-        
-        
-//        let cell = UITableViewCell()
-//        cell.textLabel?.text = "Cell - \(indexPath.row)"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "contentCell") as? ContentCell else {
+            fatalError("cell not found")
+        }
+        guard let photo = viewModel.photoForIndexPath(indexPath) else {
+            fatalError("photo not found!!!!!!!!")
+        }
+        cell.username = photo.ownername
+        cell.contentImageView.kf.setImage(with: photo.imageURL) { _ in
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+        cell.title = photo.title
+        cell.selectionStyle = .none
+        cell.likeButton.tag = indexPath.row
+        cell.likeButton.addTarget(self, action: #selector(likeTapped(sender:)), for: .touchUpInside)
+        cell.saveButton.tag = indexPath.row
+        cell.saveButton.addTarget(self, action: #selector(saveTapped(sender:)), for: .touchUpInside)
+      
         return cell
     }
     
+    @objc func likeTapped(sender: UIButton) {
+        viewModel.addFavorites()
+    }
+    
+    @objc func saveTapped(sender: UIButton) {
+        viewModel.addSaved()
+    }
 }
