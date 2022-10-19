@@ -7,13 +7,14 @@
 //import SnapKit
 import Kingfisher
 import UIKit
+import Firebase
 
 
 
 final class HomeViewController: UIViewController {
     let Tabview = mainTableView()
     private var viewModel : HomeViewModel
-    
+        
     init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -25,6 +26,14 @@ final class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        tabBarController?.navigationItem.hidesBackButton = true
+        
+        let logoutBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(logOut))
+
+        tabBarController?.navigationItem.rightBarButtonItem = logoutBarButtonItem
+        self.navigationItem.rightBarButtonItem = logoutBarButtonItem
         
         title = "Home"
         view = Tabview
@@ -83,5 +92,20 @@ extension HomeViewController: UITableViewDataSource {
     
     @objc func saveTapped(sender: UIButton) {
         viewModel.addSaved()
+    }
+    
+    @objc func logOut(){
+        do {
+            try Auth.auth().signOut()
+            let `self` = self
+            let AuthViewController = AuthViewController()
+//            let tabBarController = UITabBarController()
+//            tabBarController.viewControllers = [HomeViewController]
+           self.navigationController?.pushViewController(AuthViewController, animated: true)
+           
+            print("sign out success")
+        } catch  {
+            print("sign out failed")
+        }
     }
 }

@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
+
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,24 +18,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window:UIWindow?
 
         func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-            let window = UIWindow(frame: UIScreen.main.bounds)
-            let viewController = HomeViewController(viewModel: HomeViewModel())
-            viewController.title = "Home"
+            FirebaseApp.configure()
+                
             
             
-            let navigationController = UINavigationController(rootViewController: viewController)
-            let vcs = [navigationController]
-           
-            let tabbarControlre = UITabBarController()
-            tabbarControlre.viewControllers = vcs
-            window.rootViewController = tabbarControlre
-            window.makeKeyAndVisible()
-            self.window = window
-
-            return true
+                let window = UIWindow(frame: UIScreen.main.bounds)
+                self.window = window
+                let viewController = AuthViewController()
+                let navigationController = UINavigationController(rootViewController: viewController)
+                window.rootViewController = navigationController
+                window.makeKeyAndVisible()
+                return true
+            
+            
+            //setUpWindow()
+            
+            
+//            return true
         }
 
- 
+    private func setUpWindow() {
+        let currentUser = Auth.auth().currentUser
+        if currentUser != nil {
+            let window = UIWindow(frame: UIScreen.main.bounds)
+            let homeVC = HomeViewController(viewModel: HomeViewModel())
+            let homeNav = UINavigationController(rootViewController: homeVC)
+            let vcs = [homeNav]
+            let tabBarController = UITabBarController()
+            tabBarController.viewControllers = vcs
+            window.rootViewController = tabBarController
+            
+            
+            
+        } else {
+            let window = UIWindow(frame: UIScreen.main.bounds)
+            let viewController = AuthViewController()
+            let navigationController = UINavigationController(rootViewController: viewController)
+            window.rootViewController = navigationController
+            
+        }
+    }
 
 }
 
