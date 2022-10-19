@@ -22,4 +22,6 @@ I build a semi working flickr client app using flickr API. It fetches recent pho
 - Used some closures but Delegates what?
 
 ---
+### Click image to watch the demo
+
 [![Demo](https://user-images.githubusercontent.com/10756418/196822604-9e2b9b41-5bf9-496c-ac14-f0c3a55e73ff.png)](https://drive.google.com/file/d/1VR7qt45lyDMchPZG-t3T-MEdtRUgV9Vg/view?usp=sharing)
