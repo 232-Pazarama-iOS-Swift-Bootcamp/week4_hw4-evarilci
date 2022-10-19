@@ -3,7 +3,7 @@
 
 ## Flickr App
 
-    I build a semi working flickr client app using flickr API. It fetches recent photos from flickr and shows them on custom tableview. I use firebaseAuth to authnticate user. Once you sign in the app remembers until you sign out. You can like photos by tapping heart button under the image. When you like a photo it will be stored in firebase firestore for you.
+I build a semi working flickr client app using flickr API. It fetches recent photos from flickr and shows them on custom tableview. I use firebaseAuth to authnticate user. Once you sign in the app remembers until you sign out. You can like photos by tapping heart button under the image. When you like a photo it will be stored in firebase firestore for you.
 
 ---
 ## What I could do:
