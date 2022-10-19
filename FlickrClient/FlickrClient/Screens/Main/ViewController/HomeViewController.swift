@@ -8,12 +8,15 @@
 import Kingfisher
 import UIKit
 import Firebase
+import FirebaseFirestore
 
 
 
 final class HomeViewController: UIViewController {
     let Tabview = mainTableView()
     private var viewModel : HomeViewModel
+    let db = Firestore.firestore()
+    var photo : Photo?
         
     init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
@@ -27,6 +30,12 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        title = "Home"
+        let tabBarIcon = UIImage(named: "home")
+        tabBarItem = UITabBarItem(title: "Home",
+                                  image: tabBarIcon,
+                                  tag: .zero)
         
         tabBarController?.navigationItem.hidesBackButton = true
         
@@ -56,9 +65,7 @@ final class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: UITableViewDelegate {
-    
 }
-
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfRows
@@ -72,6 +79,8 @@ extension HomeViewController: UITableViewDataSource {
         guard let photo = viewModel.photoForIndexPath(indexPath) else {
             fatalError("photo not found!!!!!!!!")
         }
+        self.photo = photo
+        
         cell.username = photo.ownername
         cell.contentImageView.kf.setImage(with: photo.imageURL) { _ in
             tableView.reloadRows(at: [indexPath], with: .automatic)
@@ -87,11 +96,45 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     @objc func likeTapped(sender: UIButton) {
-        viewModel.addFavorites()
+        guard let id = photo?.id,
+        let image = photo?.url_z,
+        let owner = photo?.ownername,
+        let title = photo?.title else {return}
+        db.collection("Liked").document(id).setData([
+            "id" : id,
+            "imageURL" : image,
+            "ownerName" : owner,
+            "title" : title,
+            "likedBy": Auth.auth().currentUser!.email!
+        
+        ]) {err in
+            if let err = err {
+                self.showAlert(title: "Error", message: err.localizedDescription)
+            } else {
+                print("like succesed")
+            }
+        }
     }
     
     @objc func saveTapped(sender: UIButton) {
-        viewModel.addSaved()
+        guard let id = photo?.id,
+        let image = photo?.url_z,
+        let owner = photo?.ownername,
+        let title = photo?.title else {return}
+        db.collection("Saved").document(id).setData([
+            "id" : id,
+            "imageURL" : image,
+            "ownerName" : owner,
+            "title" : title,
+            "savedBy": Auth.auth().currentUser!.email!
+        
+        ]) {err in
+            if let err = err {
+                self.showAlert(title: "Error", message: err.localizedDescription)
+            } else {
+                print("saving succesed")
+            }
+        }
     }
     
     @objc func logOut(){
@@ -99,8 +142,6 @@ extension HomeViewController: UITableViewDataSource {
             try Auth.auth().signOut()
             let `self` = self
             let AuthViewController = AuthViewController()
-//            let tabBarController = UITabBarController()
-//            tabBarController.viewControllers = [HomeViewController]
            self.navigationController?.pushViewController(AuthViewController, animated: true)
            
             print("sign out success")
@@ -108,4 +149,15 @@ extension HomeViewController: UITableViewDataSource {
             print("sign out failed")
         }
     }
+    
+    func showAlert(title: String, message: String) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let button = UIAlertAction(title: "Ok", style: .default)
+        alert.addAction(button)
+        self.present(alert, animated: true)
+        
+    }
+    
+    
 }

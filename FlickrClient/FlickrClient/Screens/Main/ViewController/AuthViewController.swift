@@ -9,32 +9,29 @@ import UIKit
 import Firebase
 
 final class AuthViewController: UIViewController {
-
-    
-   // MARK: - Properties
+    // MARK: - Properties
     private lazy var emailTextField = UITextField()
     private lazy var passwordTextField = UITextField()
     private lazy var signInButton = UIButton()
     private lazy var signUpButton = UIButton()
     private lazy var label = UILabel()
-  
-  // MARK: Life cycle methods
+    
+    // MARK: Life cycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
-      //  tabBarController?.navigationItem.hidesBackButton = true
         self.navigationItem.hidesBackButton = true
-        
         let currentUser = Auth.auth().currentUser
         if currentUser != nil {
-            let `self` = self
+            //let `self` = self
             let HomeViewModel = HomeViewModel()
             let HomeViewController = HomeViewController(viewModel: HomeViewModel)
-
+            let FavViewModel = FavViewModel()
+            let FavViewController = FavViewController(viewModel: FavViewModel)
+            
             let tabBarController = UITabBarController()
-            tabBarController.viewControllers = [HomeViewController]
+            tabBarController.viewControllers = [HomeViewController, FavViewController]
             self.navigationController?.pushViewController(tabBarController, animated: true)
         }
-        
         view.backgroundColor = .white
         configureLabel()
         configureEmailField()
@@ -43,7 +40,6 @@ final class AuthViewController: UIViewController {
         configureSignUpButton()
         signInButton.addTarget(self, action: #selector(signInTapped(sender:)), for: .touchUpInside)
         signUpButton.addTarget(self, action: #selector(signUpTapped(sender:)), for: .touchUpInside)
-        
     }
     @objc func signInTapped(sender: UIButton) {
         if emailTextField.text != "" && passwordTextField.text != "" {
@@ -51,13 +47,24 @@ final class AuthViewController: UIViewController {
                 if err != nil  {
                     self.showAlert(title: "Error", message: err?.localizedDescription ?? "something went wrong")
                 } else {
-                    let `self` = self
+//                    let `self` = self
+//                    let HomeViewModel = HomeViewModel()
+//                    let HomeViewController = HomeViewController(viewModel: HomeViewModel)
+//
+//                    let tabBarController = UITabBarController()
+//                    tabBarController.viewControllers = [HomeViewController]
+//                    self.navigationController?.pushViewController(tabBarController, animated: true)
+                    
+                    //let `self` = self
                     let HomeViewModel = HomeViewModel()
                     let HomeViewController = HomeViewController(viewModel: HomeViewModel)
-
+                    let FavViewModel = FavViewModel()
+                    let FavViewController = FavViewController(viewModel: FavViewModel)
+                    
                     let tabBarController = UITabBarController()
-                    tabBarController.viewControllers = [HomeViewController]
+                    tabBarController.viewControllers = [HomeViewController, FavViewController]
                     self.navigationController?.pushViewController(tabBarController, animated: true)
+                    
                 }
                 
             }
@@ -74,14 +81,26 @@ final class AuthViewController: UIViewController {
                     self.showAlert(title: "Error", message: err?.localizedDescription ?? "Something went wrong")
                 } else {
                     
+//
+//                    let `self` = self
+//                    let HomeViewModel = HomeViewModel()
+//                    let HomeViewController = HomeViewController(viewModel: HomeViewModel)
+//
+//                    let tabBarController = UITabBarController()
+//                    tabBarController.viewControllers = [HomeViewController]
+//                    self.navigationController?.pushViewController(tabBarController, animated: true)
                     
-                    let `self` = self
+                    
+                    //let `self` = self
                     let HomeViewModel = HomeViewModel()
                     let HomeViewController = HomeViewController(viewModel: HomeViewModel)
+                    let FavViewModel = FavViewModel()
+                    let FavViewController = FavViewController(viewModel: FavViewModel)
                     
                     let tabBarController = UITabBarController()
-                    tabBarController.viewControllers = [HomeViewController]
+                    tabBarController.viewControllers = [HomeViewController, FavViewController]
                     self.navigationController?.pushViewController(tabBarController, animated: true)
+                    
                     
                 }
             }
@@ -89,23 +108,7 @@ final class AuthViewController: UIViewController {
             
             self.showAlert(title: "Error", message: "email/password can not be blank!")
         }
-        
-        
-        //viewModel.signUpTapped()
-//        guard let credential = authView.emailTextField.text,
-//              let password = authView.passwordTextField.text else {
-//            return
-//        }
-        
-       // viewModel.signUp(email: credential,
-                     //    password: password)
-        
-      
-        
     }
-    
-    
-    
     
     // MARK: Layout configurations methods
     func configureLabel() {

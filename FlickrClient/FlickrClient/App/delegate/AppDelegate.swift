@@ -23,11 +23,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             
                 let window = UIWindow(frame: UIScreen.main.bounds)
-                self.window = window
+                
                 let viewController = AuthViewController()
                 let navigationController = UINavigationController(rootViewController: viewController)
                 window.rootViewController = navigationController
                 window.makeKeyAndVisible()
+                self.window = window
+            
+            
+            
+            
                 return true
             
             
