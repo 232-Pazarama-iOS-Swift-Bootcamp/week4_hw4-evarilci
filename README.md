@@ -1,32 +1,25 @@
 # Pazarama iOS Bootcamp - Hafta 4 - Ödev
+---
 
 ## Flickr App
 
-Uygulamamızı geliştirirken Flickr API ve Firebase araçlarını kullanacağız. Uygulamada Firebase Auth ile kullanıcı kayıt ve giriş işlemlerini yöneteceğiz. Uygulamanın ana ekranında Flickr API’ı kullanarak son yüklenen fotoğrafları UITableViewController kullanarak listeleyeceğiz. Bu aşamada özelleşmiş bir UITableViewCell ile Instagram’daki post benzeri bir görünüm oluşturacağız. Kullanıcı görseli beğenebilir, kütüphanesine kaydedebilir ve profil ekranından önceden beğendiği veya kütüphaneye kaydettiği fotoğrafları görüntüleyebilir. Firebase firestore kullanılarak bilgiler buluta kaydedilmelidir.
+    I build a semi working flickr client app using flickr API. It fetches recent photos from flickr and shows them on custom tableview. I use firebaseAuth to authnticate user. Once you sign in the app remembers until you sign out. You can like photos by tapping heart button under the image. When you like a photo it will be stored in firebase firestore for you.
 
-Uygulamada arama ekranı olmalıdır. Arama ekranında mevcut bir arama olmadığı sürece popüler fotoğraflar UICollectionViewController ile grid görünümünde listelenmelidir. Eğer bir arama işlemi gerçekleştirilirse Flickr API aracılı ile girilen anahtar kelimeye uygun olarak arama yapılır ve görseller listelenir. Arama işlemi bittiğinde ekranda popüler paylaşımlar gözükmeye devam edecektir. 
+---
+## What I could do:
 
-Kullanıcı profilini düzenleyebilir olmalıdır. Bir profil fotoğrafı ekleyebilir veya kullanıcı adını değiştirebilir. Firebase remote config kullanılarak uygulamaya kayıt olma özelliği etkinleştirilebilir veya devre dışı bırakabilir. Kullanıcı profil ekranından çıkış yapıp giriş ekranına yönlendirilmelidir.
+- Using MOYA library to communicate to Flickr API
+- Firebase Auth and Firestore works effectively
+- Used SnapKit to create all components. It looks sweet!
+- Followed MVVM architecture most parts.
+- Used SPM for third party libraries.
+- Minimum Deployment version is iOS 12
 
-![img](flickr-app.png)
+## What I couldn't do
 
-## Değerlendirme Kriterleri
+- Eventhough saving data on firestore occurs successfully, could not manage to make it show on screen.
+- implementing search API and search bar
+- Used some closures but Delegates what?
 
-1. Flickr API ile iletişim katmanının Moya kütüphanesi aracılığı ile oluşturulması.
-2. Firebase Auth, Remote Config ve Firestore özelliklerinin kullanılması.
-3. Uygulamanın ekranlarının açıklamaya uygun şekilde tasarlanması.
-4. MVVM tasarım düzeninin kullanılması.
-5. Controller ve ViewModel arasındaki iletişimin Delegate veya Closure kullanılarak yapılması.
-6. Ekran tasarımlarının SnapKit ile programlayarak veya Xib dosyaları ile yapılması.
-7. Minimum versiyon desteğinin iOS 12.0 olması.
-8. IQKeyboardManager ile input alanları arasındaki geçişin yönetilmesi. Klavyenin ekranda bir boşluğa dokununca veya klavye üstündeki toolbarda yer alan KAPAT butonuna basarak kapatılabilmesi.
-9. Üçüncü parti kütüphanelerin Cocoapods veya SPM ile entegrasyonu.
+---
 
-## Faydalı Linkler
-
-- Flickr API: https://www.flickr.com/services/api/
-- Firebase Auth: https://firebase.google.com/docs/auth/ios/start
-- Firebase Firestore: https://firebase.google.com/docs/firestore/quickstart
-- Firebase Cloud Storage: https://firebase.google.com/docs/firestore/quickstart
-- Firebase Remote Config: https://firebase.google.com/docs/remote-config/?authuser=0
-- Örnek Proje:  https://github.com/232-Pazarama-iOS-Swift-Bootcamp/week4_day1_crypto_app
