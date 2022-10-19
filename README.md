@@ -17,7 +17,7 @@ I build a semi working flickr client app using flickr API. It fetches recent pho
 
 ## What I couldn't do
 
-- Eventhough saving data on firestore occurs successfully, could not manage to make it show on screen.
+- even though saving data on firestore occurs successfully, could not manage to make it show on screen.
 - implementing search API and search bar
 - Used some closures but Delegates what?
 
