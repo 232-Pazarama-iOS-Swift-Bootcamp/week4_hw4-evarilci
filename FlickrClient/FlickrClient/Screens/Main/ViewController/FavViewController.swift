@@ -31,18 +31,7 @@ final class FavViewController: UIViewController {
         super.viewDidLoad()
         
         
-        tabBarController?.navigationItem.hidesBackButton = true
-        let HomeViewModel = FavViewModel()
-        let HomeViewController = FavViewController(viewModel: HomeViewModel)
-        
-        let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [HomeViewController]
-        
-        title = "Favorites"
-        let tabBarIcon = UIImage(named: "favorite")
-        tabBarItem = UITabBarItem(title: "Favorites",
-                                  image: tabBarIcon,
-                                  tag: 1)
+
         
         view = Tabview
         Tabview.setTableViewDelegates(delegate: self, datasource: self)
@@ -58,16 +47,25 @@ final class FavViewController: UIViewController {
         }
     }
     
-    @objc func liked() {
-        print("liked")
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel.getData()
+        viewModel.statusHandler = { status in
+            switch status {
+            case .didFetchPhotos:
+                self.Tabview.tableView.reloadData()
+            case .didErrorOccurred(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
+    
 }
 
 extension FavViewController: UITableViewDelegate {
 }
 extension FavViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.idArray.count
+        return viewModel.numberOfRows
     }
     
     

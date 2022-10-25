@@ -30,6 +30,11 @@ final class FavViewModel {
     
     let db = Firestore.firestore()
     
+    var numberOfRows: Int {
+        self.idArray.count
+    }
+    
+    
     func getData(){
         db.collection("Liked").addSnapshotListener { snapshot, err in
             if let err {
@@ -47,9 +52,11 @@ final class FavViewModel {
                         self.imagegeURLArray.append(imagegeURL)
                         self.ownerNameArray.append(ownerName)
                         self.titleArray.append(title)
+                        self.tableview.tableView.reloadData()
                     }
                     self.tableview.tableView.reloadData()
                 }
+                self.tableview.tableView.reloadData()
             }
             
         }

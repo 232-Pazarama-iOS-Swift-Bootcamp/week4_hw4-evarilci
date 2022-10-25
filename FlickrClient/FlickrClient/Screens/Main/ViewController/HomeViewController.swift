@@ -30,21 +30,21 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        title = "Home"
-        let tabBarIcon = UIImage(named: "home")
-        tabBarItem = UITabBarItem(title: "Home",
-                                  image: tabBarIcon,
-                                  tag: .zero)
-        
-        tabBarController?.navigationItem.hidesBackButton = true
+//
+//        title = "Home"
+//        let tabBarIcon = UIImage(named: "home")
+//        tabBarItem = UITabBarItem(title: "Home",
+//                                  image: tabBarIcon,
+//                                  tag: .zero)
+//
+//        tabBarController?.navigationItem.hidesBackButton = true
         
         let logoutBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(logOut))
 
         tabBarController?.navigationItem.rightBarButtonItem = logoutBarButtonItem
         self.navigationItem.rightBarButtonItem = logoutBarButtonItem
         
-        title = "Home"
+//        title = "Home"
         view = Tabview
         Tabview.setTableViewDelegates(delegate: self, datasource: self)
         

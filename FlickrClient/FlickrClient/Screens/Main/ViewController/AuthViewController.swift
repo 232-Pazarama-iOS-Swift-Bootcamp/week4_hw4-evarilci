@@ -22,17 +22,22 @@ final class AuthViewController: UIViewController {
         self.navigationItem.hidesBackButton = true
         let currentUser = Auth.auth().currentUser
         if currentUser != nil {
-            //let `self` = self
-            let HomeViewModel = HomeViewModel()
-            let HomeViewController = HomeViewController(viewModel: HomeViewModel)
-            let FavViewModel = FavViewModel()
-            let FavViewController = FavViewController(viewModel: FavViewModel)
+//            //let `self` = self
+//            let HomeViewModel = HomeViewModel()
+//            let HomeViewController = HomeViewController(viewModel: HomeViewModel)
+//            let FavViewModel = FavViewModel()
+//            let FavViewController = FavViewController(viewModel: FavViewModel)
+//
+//            let tabBarController = UITabBarController()
+//            tabBarController.viewControllers = [HomeViewController, FavViewController]
+//            self.navigationController?.pushViewController(tabBarController, animated: true)
             
-            let tabBarController = UITabBarController()
-            tabBarController.viewControllers = [HomeViewController, FavViewController]
-            self.navigationController?.pushViewController(tabBarController, animated: true)
+            let tabBarViewController = TabBarViewController()
+            tabBarViewController.modalPresentationStyle = .fullScreen
+            self.navigationController?.present(tabBarViewController, animated: true)
+            
         }
-        view.backgroundColor = .white
+        //view.backgroundColor = .white
         configureLabel()
         configureEmailField()
         configurePasswordField()
