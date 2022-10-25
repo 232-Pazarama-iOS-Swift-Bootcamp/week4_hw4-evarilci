@@ -52,11 +52,11 @@ final class FavViewModel {
                         self.imagegeURLArray.append(imagegeURL)
                         self.ownerNameArray.append(ownerName)
                         self.titleArray.append(title)
-                        self.tableview.tableView.reloadData()
+                        
                     }
                     self.tableview.tableView.reloadData()
                 }
-                self.tableview.tableView.reloadData()
+               
             }
             
         }
